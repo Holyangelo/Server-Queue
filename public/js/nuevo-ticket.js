@@ -26,7 +26,12 @@ socket.on('disconnect', () => {
     console.log( payload )
 })*/
 
+//recibimos el ultimo ticket registrado y lo mostramos en pantalla
+socket.on('last-ticket', (last)=>{
+    lblNuevoTicket.innerText = 'ticket : ' + last;
+});
 
+//creamos un nuevo ticket y emitimos la orden de creacion
 btnCreateTicket.addEventListener( 'click', () => {
 
     socket.emit( 'next-ticket', null, ( ticket ) => {
